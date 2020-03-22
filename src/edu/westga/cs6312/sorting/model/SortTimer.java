@@ -23,7 +23,9 @@ public class SortTimer {
 	 * @postcondition new SortTimer object created with isRunning set to false
 	 */
 	public SortTimer() {
-		isRunning = false;
+		this.startTime = null;
+		this.endTime = null;
+		this.isRunning = false;
 	}
 
 	/**
@@ -73,5 +75,20 @@ public class SortTimer {
 			elapsedTime = ChronoUnit.MILLIS.between(this.startTime, this.endTime);
 		}
 		return elapsedTime;
+	}
+	
+	/**
+	 * Produces a string representation of object variables of the form:
+	 * "Start: xxxxx		Stop: xxxxx		Running: xxxxx"
+	 * 
+	 * @return	string representation of object variables
+	 *
+	 * @precondition	none
+	 *
+	 * @postcondition	no change to object
+	 */
+	@Override
+	public String toString() {
+		return "Start: " + this.startTime +  "\tEnd: " + this.endTime +  "\tRunning: " + this.isRunning;
 	}
 }

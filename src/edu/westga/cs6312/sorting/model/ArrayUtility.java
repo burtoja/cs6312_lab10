@@ -63,11 +63,11 @@ public class ArrayUtility {
 		if (theArray == null || theArray.length < 1) {
 			throw new IllegalArgumentException("Array must have at least one value");
 		}
-		boolean notIncreasingOrder = false;
+		boolean notIncreasingOrder = true;
 		int previousEntry = theArray[0];
 		for (int current : theArray) {
-			if (current < previousEntry) {
-				notIncreasingOrder = true;
+			if (current > previousEntry) {
+				notIncreasingOrder = false;
 				break;
 			} else {
 				previousEntry = current;

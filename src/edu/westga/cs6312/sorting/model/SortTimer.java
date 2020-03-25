@@ -79,7 +79,7 @@ public class SortTimer {
 	
 	/**
 	 * Produces a string representation of object variables of the form:
-	 * "Start: xxxxx		Stop: xxxxx		Running: xxxxx"
+	 * "Start: xxxxx		Stop: xxxxx		`Running: xxxxx"
 	 * 
 	 * @return	string representation of object variables
 	 *

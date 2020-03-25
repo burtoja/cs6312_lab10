@@ -17,14 +17,35 @@ import edu.westga.cs6312.sorting.model.ArrayUtility;
 public class ArrayUtilityWhenCopyArray {
 
 	/**
-	 * This method will test the copyArray method. It will be supplied with an array
-	 * of integers and should produce an exact copy
+	 * This will test the copyArray method. It will be supplied with an array of
+	 * integers and should produce an exact copy
 	 * 
 	 */
 	@Test
 	public void testCopyArrayExpectIdenticalArray() {
 		ArrayUtility theArrayUtility = new ArrayUtility();
 		int[] testList = new int[] { 4, 5, 6, 7, 8 };
+		String expectedDigits = "";
+		for (int current : testList) {
+			expectedDigits += current;
+		}
+		int[] copyOfList = theArrayUtility.copyArray(testList);
+		String actualDigits = "";
+		for (int current : copyOfList) {
+			actualDigits += current;
+		}
+		assertEquals(expectedDigits, actualDigits);
+	}
+
+	/**
+	 * This will test the copyArray method on a large array created with the
+	 * ArrayUtility createArray method to test the copyArray method on a larger
+	 * array..
+	 */
+	@Test
+	public void testCopyLargerArrayExpectIdenticalArray() {
+		ArrayUtility theArrayUtility = new ArrayUtility();
+		int[] testList = theArrayUtility.createArray(500);
 		String expectedDigits = "";
 		for (int current : testList) {
 			expectedDigits += current;

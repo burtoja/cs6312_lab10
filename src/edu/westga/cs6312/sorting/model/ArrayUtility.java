@@ -127,7 +127,7 @@ public class ArrayUtility {
 	}
 
 	/**
-	 * This method will sort the elements in theArray into nonincreasing order
+	 * This method will sort the elements in theArray into non-increasing order
 	 * using the selection sort algorithm
 	 * 
 	 * @param theArray	array of integers to be sorted
@@ -152,7 +152,7 @@ public class ArrayUtility {
 	}
 	
 	/**
-	 * This method will sort the elements in theArray into nonincreasing order
+	 * This method will sort the elements in theArray into non-increasing order
 	 * using the merge sort algorithm
 	 * 
 	 * @param theArray	array of integers to be sorted

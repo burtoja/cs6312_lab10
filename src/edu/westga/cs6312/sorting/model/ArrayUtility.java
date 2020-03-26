@@ -130,11 +130,12 @@ public class ArrayUtility {
 	 * This method will sort the elements in theArray into non-increasing order
 	 * using the selection sort algorithm
 	 * 
-	 * @param theArray	array of integers to be sorted
+	 * @param theArray array of integers to be sorted
 	 *
-	 * @precondition	theArray != null and must have at least one element
+	 * @precondition theArray != null and must have at least one element
 	 *
-	 * @postcondition	no change to object (the Array is now sorted in non-increasing order)
+	 * @postcondition no change to object (the Array is now sorted in non-increasing
+	 *                order)
 	 */
 	public void selectionSort(int[] theArray) {
 		if (theArray == null || theArray.length < 1) {
@@ -150,16 +151,17 @@ public class ArrayUtility {
 			this.swapElements(currentIndex, largestestIndex, theArray);
 		}
 	}
-	
+
 	/**
 	 * This method will sort the elements in theArray into non-increasing order
 	 * using the merge sort algorithm
 	 * 
-	 * @param theArray	array of integers to be sorted
+	 * @param theArray array of integers to be sorted
 	 *
-	 * @precondition	theArray != null and must have at least one element
+	 * @precondition theArray != null and must have at least one element
 	 *
-	 * @postcondition	no change to object (the Array is now sorted in non-increasing order)
+	 * @postcondition no change to object (the Array is now sorted in non-increasing
+	 *                order)
 	 */
 	public void mergeSort(int[] theArray) {
 		if (theArray == null || theArray.length < 1) {
@@ -179,37 +181,37 @@ public class ArrayUtility {
 		}
 		this.mergeSort(tempArrayA);
 		this.mergeSort(tempArrayB);
-		
+
 		this.merge(tempArrayA, tempArrayB, theArray);
 	}
-	
+
 	/**
 	 * Helper method to manage the merging of sorted arrays
 	 * 
-	 * @param listA	list of sorted integers
-	 * @param listB	list of sorted integers
-	 * @param tempList	original unsorted array to have values 
+	 * @param listA    list of sorted integers
+	 * @param listB    list of sorted integers
+	 * @param tempList original unsorted array to have values
 	 *
-	 * @precondition	TODO
+	 * @precondition listA != null && listB != null && tempList =! null
 	 *
-	 * @postcondition	TODO
+	 * @postcondition no change to object (tempList is rebuilt with ordered values)
 	 */
 	private void merge(int[] listA, int[] listB, int[] tempList) {
-		int currentA = 0; 
-	    int currentB = 0; 
-	    int currentTemp = 0; 
-	    
-	    while (currentA < listA.length && currentB < listB.length) {
-	        if (listA[currentA] > listB[currentB])
-	        	tempList[currentTemp++] = listA[currentA++];
-	        else
-	        	tempList[currentTemp++] = listB[currentB++];
-	      }
-
-	      while (currentA > listA.length)
-	    	  tempList[currentTemp++] = listA[currentA++];
-
-	      while (currentB > listB.length)
-	    	  tempList[currentTemp++] = listB[currentB++];
+		int currentA = 0;
+		int currentB = 0;
+		int currentTemp = 0;
+		while (currentA < listA.length && currentB < listB.length) {
+			if (listA[currentA] > listB[currentB]) {
+				tempList[currentTemp++] = listA[currentA++];
+			} else {
+				tempList[currentTemp++] = listB[currentB++];
+			}
+		}
+		while (currentA < listA.length) {
+			tempList[currentTemp++] = listA[currentA++];
+		}
+		while (currentB < listB.length) {
+			tempList[currentTemp++] = listB[currentB++];
+		}
 	}
 }

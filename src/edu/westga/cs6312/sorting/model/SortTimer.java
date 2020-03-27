@@ -37,7 +37,7 @@ public class SortTimer {
 	 * @postcondition startTime is set to current time and isRunning is set to true
 	 */
 	public void startTimer() {
-		if (isRunning == false) {
+		if (!this.isRunning) {
 			this.startTime = Instant.now();
 			this.isRunning = true;
 		}
@@ -53,7 +53,7 @@ public class SortTimer {
 	 *                false
 	 */
 	public void stopTimer() {
-		if (isRunning == true) {
+		if (this.isRunning) {
 			this.endTime = Instant.now();
 			this.isRunning = false;
 		}
@@ -71,7 +71,7 @@ public class SortTimer {
 	 */
 	public long getElapsedTime() {
 		long elapsedTime = 0;
-		if (isRunning == false && this.endTime != null) {
+		if (!this.isRunning && this.endTime != null) {
 			elapsedTime = ChronoUnit.MILLIS.between(this.startTime, this.endTime);
 		}
 		return elapsedTime;

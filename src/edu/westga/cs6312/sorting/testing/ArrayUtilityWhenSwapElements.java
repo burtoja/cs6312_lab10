@@ -88,6 +88,4 @@ public class ArrayUtilityWhenSwapElements {
 		assertEquals(expected, actual);
 	}
 	
-	
-
 }

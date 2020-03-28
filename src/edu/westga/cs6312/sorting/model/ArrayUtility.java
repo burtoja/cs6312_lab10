@@ -28,7 +28,7 @@ public class ArrayUtility {
 	 * This method will create an array of size, size, populate it with random
 	 * numbers between the minimum and maximum integer values
 	 * 
-	 * @param size
+	 * @param size	number of elements to include in the array
 	 * 
 	 * @return array of integers of size size
 	 *
@@ -51,7 +51,7 @@ public class ArrayUtility {
 	 * This method will return true if and only if the elements in the array are in
 	 * non-increasing order.
 	 * 
-	 * @param theArray
+	 * @param theArray	the array to check for non-increasing order
 	 * 
 	 * @return true if array elements are in non-increasing order
 	 *

@@ -40,8 +40,7 @@ public class SortTUI {
 	public void run() {
 		int userArraySize;	
 		System.out.println("Welcome to the Sort Comparison Application.");				
-		userArraySize = this.getPositiveIntegerFromUser("Please enter an array size");		
-
+		userArraySize = this.getIntegerGreaterThanOneFromUser("Please enter an array size: ");		
 		int[] arrayForSelectionSort = this.userArrayUtility.createArray(userArraySize);
 		int[] arrayForMergeSort = this.userArrayUtility.copyArray(arrayForSelectionSort);	
 
@@ -49,19 +48,22 @@ public class SortTUI {
 		this.userSortTimer.startTimer();
 		this.userArrayUtility.selectionSort(arrayForSelectionSort);
 		this.userSortTimer.stopTimer();
-		System.out.println("After sorting, Selection's array is sorted:\t" + this.userArrayUtility.isInNonIncreasingOrder(arrayForSelectionSort));
-		System.out.println("Selection sort took:\t" + this.userSortTimer.getElapsedTime() + " milliseconds");
+		this.displayResults(arrayForSelectionSort, "Selection");
 		
 		System.out.println("Before sorting, Merge's array is sorted:\t" + this.userArrayUtility.isInNonIncreasingOrder(arrayForMergeSort));
 		this.userSortTimer.startTimer();
 		this.userArrayUtility.mergeSort(arrayForMergeSort);
 		this.userSortTimer.stopTimer();
-		System.out.println("After sorting, Merge's array is sorted:\t" + this.userArrayUtility.isInNonIncreasingOrder(arrayForMergeSort));	
-		System.out.println("Merge sort took:\t" + this.userSortTimer.getElapsedTime() + " milliseconds");
+		this.displayResults(arrayForMergeSort, "Merge");
 		
 		System.out.println("Thank you for using the Sort Comparison Application.");
 	}
 
+	private void displayResults(int[] theArray, String sortTypeName) {
+		System.out.println("After sorting, the " + sortTypeName + "'s array is sorted:\t" + this.userArrayUtility.isInNonIncreasingOrder(theArray));	
+		System.out.println(sortTypeName + " sort took:\t" + this.userSortTimer.getElapsedTime() + " milliseconds\n");
+	}
+	
 	/**
 	 * This method displays the message provided in the parameter, reads the user
 	 * input, and returns the integer provided by the user.
@@ -72,7 +74,7 @@ public class SortTUI {
 	 *
 	 * @postcondition integer returned corresponding to user input
 	 */
-	private int getPositiveIntegerFromUser(String message) {
+	private int getIntegerGreaterThanOneFromUser(String message) {
 		String input = "";
 		int userInteger = 0;
 		boolean isValid = false;
@@ -81,11 +83,13 @@ public class SortTUI {
 				System.out.println(message);
 				input = this.input.nextLine();
 				userInteger = Integer.parseInt(input);
-				if (userInteger > 0) {
+				if (userInteger > 1) {
 					isValid = true;
+				} else {
+					System.out.println("Array size must be greater than one to perform sorting operations.\n");
 				}
 			} catch (NumberFormatException nfe) {
-				System.out.println("Your entry (" + input + ") was not a valid integer greater than zero.  Please try again.");
+				System.out.println("Your entry (" + input + ") was not a valid integer.  Please try again.");
 			}
 		} while (!isValid);
 		return userInteger;

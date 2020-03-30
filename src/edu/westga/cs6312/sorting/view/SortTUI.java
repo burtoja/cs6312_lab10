@@ -44,19 +44,23 @@ public class SortTUI {
 		int[] arrayForSelectionSort = this.userArrayUtility.createArray(userArraySize);
 		int[] arrayForMergeSort = this.userArrayUtility.copyArray(arrayForSelectionSort);
 
-		this.printIsSortedMessage(arrayForSelectionSort, "Selection", "Before");
+		System.out.print(" Before sorting, Selection's array is sorted:\t");
+		System.out.println(this.userArrayUtility.isInNonIncreasingOrder(arrayForSelectionSort));
 		this.userSortTimer.startTimer();
 		this.userArrayUtility.selectionSort(arrayForSelectionSort);
 		this.userSortTimer.stopTimer();
-		this.printIsSortedMessage(arrayForSelectionSort, "Selection", "After");
-		this.printTimingResultsMessage(arrayForSelectionSort, "Selection");
+		System.out.print(" After sorting, Selection's array is sorted:\t");
+		System.out.println(this.userArrayUtility.isInNonIncreasingOrder(arrayForSelectionSort));
+		System.out.println(" Selection sort took:\t" + this.userSortTimer.getElapsedTime() + " milliseconds\n");
 
-		this.printIsSortedMessage(arrayForMergeSort, "Merge", "Before");
+		System.out.print(" Before sorting, Merge's array is sorted:\t");
+		System.out.println(this.userArrayUtility.isInNonIncreasingOrder(arrayForMergeSort));
 		this.userSortTimer.startTimer();
 		this.userArrayUtility.mergeSort(arrayForMergeSort);
 		this.userSortTimer.stopTimer();
-		this.printIsSortedMessage(arrayForMergeSort, "Merge", "After");
-		this.printTimingResultsMessage(arrayForMergeSort, "Merge");
+		System.out.print(" After sorting, Merge's array is sorted:\t");
+		System.out.println(this.userArrayUtility.isInNonIncreasingOrder(arrayForMergeSort));
+		System.out.println(" Merge sort took:\t" + this.userSortTimer.getElapsedTime() + " milliseconds\n");
 
 		System.out.println("Thank you for using the Sort Comparison Application.");
 	}
@@ -90,43 +94,5 @@ public class SortTUI {
 			}
 		} while (!isValid);
 		return userInteger;
-	}
-
-	/**
-	 * Prints to console the message stating the whether the array elements are in
-	 * non-increasing order
-	 * 
-	 * @param theArray     the array that is going to or has been timed
-	 * @param sortTypeName the sort type that will or has been performed (i.e.
-	 *                     "Merge" or "Selection")
-	 * @param beforeAfter  a string to be printed indicating whether this message
-	 *                     refers to the state before the sort or after the sort has
-	 *                     been performed ("Before" or "After")
-	 *
-	 * @precondition theArray != null (handled elsewhere)
-	 * 
-	 * @postcondition no change to object
-	 */
-	private void printIsSortedMessage(int[] theArray, String sortTypeName, String beforeAfter) {
-		System.out.println(" " + beforeAfter + " sorting, " + sortTypeName + "'s array is sorted:\t"
-				+ this.userArrayUtility.isInNonIncreasingOrder(theArray));
-	}
-
-	/**
-	 * Prints to console the message stating the elapsed time of sort operation
-	 * 
-	 * @param theArray     The array that was acted upon
-	 * @param sortTypeName a string representation of the type of sort (i.e. "Merge"
-	 *                     or "Selection")
-	 *
-	 * @precondition theArray != null (handled elsewhere) and userSortTimer has been
-	 *               started and stopped
-	 * 
-	 *
-	 * @postcondition no change to object
-	 */
-	private void printTimingResultsMessage(int[] theArray, String sortTypeName) {
-		System.out.println(
-				" " + sortTypeName + " sort took:\t" + this.userSortTimer.getElapsedTime() + " milliseconds\n");
 	}
 }
